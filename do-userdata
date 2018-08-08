@@ -1,0 +1,26 @@
+#!/bin/bash
+#just copy the content of this file into the userdata window of Digital Ocean droplet when creating it.
+#update user name and password to your own.
+user=saeed
+password=ch@ngeTHI$p@ssw0rd!
+name="Saeed Joulaei"
+
+useradd "$user" -c "$name"
+
+echo $user:$password | chpasswd
+usermod -aG wheel $user
+
+#make it nopassword for sudo
+echo -e "\033[32mupdate visudo to NOPASSWORD for wheel group\033[0m"
+sed -i "$ a ## Next Line Added by simpledotsys" /etc/sudoers
+sed -i "$ a $user ALL=(ALL)       NOPASSWD: ALL" /etc/sudoers && echo 'sudoers updated Successfully' || echo 'sudoers update failed'
+
+
+yum -y install git
+
+su $user <<EOF
+cd /home/$user/
+git clone https://github.com/sjoulaei/simpledotsys.git
+cd simpledotsys
+sh install.sh
+EOF
