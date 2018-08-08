@@ -6,7 +6,7 @@ Copy content of do-userdata file into your digital ocean user data entry screen 
 
 Don't forget to update the username and password.
 
-![Digital Ocean User data entry form](https://github.com/sjoulaei/do-userdata/images/do-userdata-form.png)
+![](https://raw.githubusercontent.com/sjoulaei/digitalocean-userdata/master/images/do-userdata-form.png )
 
 Enjoy it.
 
